@@ -1,0 +1,17 @@
+# Project 3 (BYOW - Build Your Own World) — JUnit results
+# Run: javac -cp '../library-sp21/javalib/*' byow/TileEngine/*.java byow/Core/*.java
+#      java -cp '../library-sp21/javalib/*;.' org.junit.runner.JUnitCore byow.Core.WorldGenerationTest
+
+OK (6 tests)
+
+## Verified properties:
+## - sameSeedProducesSameWorld: identical worlds for identical seeds (determinism)
+## - differentSeedsDiffer: distinct seeds produce distinct worlds
+## - avatarIsPlacedOnFloorNeighbourhood: avatar starts on a FLOOR tile
+## - allFloorIsConnected: BFS from avatar reaches EVERY walkable tile
+##   (seed N20218S: all floor+avatar tiles reachable, >100 floor tiles)
+## - movementRespectsWalls: WASD never walks through walls; exactly 1 avatar
+## - quitAndLoadReproduceState: 'N999Sdddwww:q' + 'L' == 'N999Sdddwww'
+
+## Sample world (seed N2873123S): 950 floor tiles, avatar at (32,9).
+## Full ASCII render in results/proj3_byow_world_sample.txt

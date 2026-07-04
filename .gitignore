@@ -20,3 +20,7 @@ Thumbs.db
 
 # Editor backups
 *~
+
+# BYOW save file
+byow_save.ser
+**/byow_save.ser
