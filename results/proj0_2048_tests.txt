@@ -1,0 +1,18 @@
+# Project 0 (2048) — JUnit results
+# Run: java -cp 'javalib/*;.' org.junit.runner.JUnitCore game2048.<Test>
+
+== TestEmptySpace ==
+OK (8 tests)
+
+== TestMaxTileExists ==
+OK (8 tests)
+
+== TestUpOnly ==
+OK (4 tests)
+
+== TestModel ==
+OK (45 tests)
+
+== TestAtLeastOneMoveExists ==
+OK (10 tests)
+
