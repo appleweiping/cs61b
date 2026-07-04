@@ -1,0 +1,22 @@
+# Compiled class files
+*.class
+**/classes/
+out/
+target/
+
+# Gitlet integration-test scratch dirs & sentinels
+proj2/gitlet/sentinel
+proj2/testing/*_dir*/
+proj2/testing/__pycache__/
+**/__pycache__/
+
+# IntelliJ
+.idea/
+*.iml
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor backups
+*~
