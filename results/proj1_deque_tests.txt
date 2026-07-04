@@ -1,0 +1,18 @@
+# Project 1 (Deques + GuitarString) — JUnit results
+# Run: javac -cp '../library-sp21/javalib/*' deque/*.java
+#      java -cp '../library-sp21/javalib/*;.' org.junit.runner.JUnitCore deque.<Test>
+
+== deque.LinkedListDequeTest ==
+OK (8 tests)
+
+== deque.ArrayDequeTest ==
+OK (7 tests)
+
+== deque.MaxArrayDequeTest ==
+OK (3 tests)
+
+== gh2.GuitarString (headless Karplus-Strong check) ==
+initial sample after pluck ~= 0.384 (nonzero, in [-0.5,0.5])
+max |sample| over 44100 tics = 0.4987 (<= 0.5, bounded)
+|sample| after 1s of tics = 0.0064 (decayed toward 0)
+PASS: Karplus-Strong decays and stays bounded; sample() is non-mutating
