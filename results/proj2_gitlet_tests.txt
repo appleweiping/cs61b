@@ -1,0 +1,37 @@
+# Project 2 (Gitlet) — integration test results
+# Framework: CS61B staff tester.py (interprets .in integration tests)
+# Compiled with JDK 21: javac -d classes proj2/gitlet/*.java
+# Run: python testing/tester.py --progdir=<classes> samples/*.in student_tests/*.in
+
+## Commands exercised: init, add, commit, rm, log, global-log, find,
+## status, checkout (3 forms), branch, rm-branch, reset, merge
+## (clean 3-way, conflict, fast-forward, ancestor), plus all error messages.
+
+test01-init:
+OK
+test02-basic-checkout:
+OK
+test03-basic-log:
+OK
+test04-prev-checkout:
+OK
+test10-add-status:
+OK
+test11-rm:
+OK
+test12-branch-checkout:
+OK
+test13-merge-conflict:
+OK
+test14-find-globallog:
+OK
+test15-reset:
+OK
+test16-errors:
+OK
+test17-merge-noconflict:
+OK
+test18-fastforward:
+OK
+
+Ran 13 tests. All passed.

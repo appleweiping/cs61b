@@ -1,0 +1,51 @@
+# A merge in which the same file is changed differently on both branches
+# produces a conflict.
+I definitions.inc
+> init
+<<<
++ f.txt conflict1.txt
+> add f.txt
+<<<
+> commit "base f"
+<<<
+> branch other
+<<<
++ f.txt wug.txt
+> add f.txt
+<<<
+> commit "master changes f"
+<<<
+> checkout other
+<<<
++ f.txt notwug.txt
+> add f.txt
+<<<
+> commit "other changes f"
+<<<
+> checkout master
+<<<
+> merge other
+Encountered a merge conflict.
+<<<
+# The merge auto-commits the conflict resolution, so nothing stays staged.
+> status
+=== Branches ===
+\*master
+other
+
+=== Staged Files ===
+
+=== Removed Files ===
+
+=== Modifications Not Staged For Commit ===
+
+=== Untracked Files ===
+
+<<<*
+> log
+===
+${COMMIT_HEAD}
+Merged other into master.
+
+${ARBLINES}
+<<<*

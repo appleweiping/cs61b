@@ -1,0 +1,58 @@
+# Assorted error conditions and their exact messages.
+> init
+<<<
+# Re-initializing is an error.
+> init
+A Gitlet version-control system already exists in the current directory.
+<<<
+> add nosuchfile.txt
+File does not exist.
+<<<
+# Nothing staged yet.
+> commit "empty"
+No changes added to the commit.
+<<<
+> commit
+Incorrect operands.
+<<<
++ wug.txt wug.txt
+> add wug.txt
+<<<
+# Empty commit message.
+> commit ""
+Please enter a commit message.
+<<<
+> commit "real commit"
+<<<
+> rm notacommittedfile.txt
+No reason to remove the file.
+<<<
+> branch dev
+<<<
+> branch dev
+A branch with that name already exists.
+<<<
+> rm-branch nope
+A branch with that name does not exist.
+<<<
+> rm-branch master
+Cannot remove the current branch.
+<<<
+> checkout master
+No need to checkout the current branch.
+<<<
+> checkout nosuchbranch
+No such branch exists.
+<<<
+> checkout badcommitid -- wug.txt
+No commit with that id exists.
+<<<
+> merge master
+Cannot merge a branch with itself.
+<<<
+> merge ghostbranch
+A branch with that name does not exist.
+<<<
+> notacommand
+No command with that name exists.
+<<<

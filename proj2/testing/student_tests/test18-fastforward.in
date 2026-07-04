@@ -1,0 +1,29 @@
+# Merging a branch that is strictly ahead fast-forwards the current branch.
+> init
+<<<
++ a.txt a.txt
+> add a.txt
+<<<
+> commit "add a"
+<<<
+> branch feature
+<<<
+> checkout feature
+<<<
++ b.txt b.txt
+> add b.txt
+<<<
+> commit "feature adds b"
+<<<
+> checkout master
+<<<
+# master is behind feature -> fast-forward.
+> merge feature
+Current branch fast-forwarded.
+<<<
+= a.txt a.txt
+= b.txt b.txt
+# The reverse merge: feature is now an ancestor of master.
+> merge feature
+Given branch is an ancestor of the current branch.
+<<<

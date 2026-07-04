@@ -1,0 +1,23 @@
+# Branch, commit on it, and check out files across branches.
+> init
+<<<
++ wug.txt wug.txt
+> add wug.txt
+<<<
+> commit "version 1 of wug"
+<<<
+> branch other
+<<<
++ wug.txt notwug.txt
+> add wug.txt
+<<<
+> commit "version 2 of wug on master"
+<<<
+= wug.txt notwug.txt
+> checkout other
+<<<
+# other still has version 1.
+= wug.txt wug.txt
+> checkout master
+<<<
+= wug.txt notwug.txt

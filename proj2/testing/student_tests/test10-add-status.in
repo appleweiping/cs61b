@@ -1,0 +1,20 @@
+# Staging a file shows up under Staged Files in status.
+> init
+<<<
++ wug.txt wug.txt
+> add wug.txt
+<<<
+> status
+=== Branches ===
+\*master
+
+=== Staged Files ===
+wug.txt
+
+=== Removed Files ===
+
+=== Modifications Not Staged For Commit ===
+
+=== Untracked Files ===
+
+<<<*

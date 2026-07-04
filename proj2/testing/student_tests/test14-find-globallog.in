@@ -1,0 +1,27 @@
+# find locates commits by message; global-log shows all commits.
+I definitions.inc
+D SHA "[a-f0-9]{40}"
+> init
+<<<
++ wug.txt wug.txt
+> add wug.txt
+<<<
+> commit "hello"
+<<<
++ notwug.txt notwug.txt
+> add notwug.txt
+<<<
+> commit "hello"
+<<<
+# Two commits share the message "hello"; find prints both ids (order unspecified).
+> find "hello"
+${SHA}
+${SHA}
+<<<*
+> find "no such message"
+Found no commit with that message.
+<<<
+# global-log contains at least the three commits made (2 hello + initial).
+> global-log
+${ARBLINES}
+<<<*

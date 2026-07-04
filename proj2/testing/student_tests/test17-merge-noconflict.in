@@ -1,0 +1,40 @@
+# A clean three-way merge that pulls in a new file from the other branch and
+# keeps a file modified only on the current branch.
+I definitions.inc
+> init
+<<<
++ a.txt a.txt
+> add a.txt
+<<<
+> commit "add a"
+<<<
+> branch other
+<<<
+# On master: modify a.txt.
++ a.txt wug.txt
+> add a.txt
+<<<
+> commit "master modifies a"
+<<<
+> checkout other
+<<<
+# On other: add a brand-new file b.txt, leave a.txt untouched.
++ b.txt b.txt
+> add b.txt
+<<<
+> commit "other adds b"
+<<<
+> checkout master
+<<<
+> merge other
+<<<
+# a.txt keeps the master modification; b.txt is pulled in from other.
+= a.txt wug.txt
+= b.txt b.txt
+> log
+===
+${COMMIT_HEAD}
+Merged other into master.
+
+${ARBLINES}
+<<<*

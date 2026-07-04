@@ -1,0 +1,44 @@
+# reset moves the branch head and restores the working directory to a commit.
+I definitions.inc
+> init
+<<<
++ wug.txt wug.txt
+> add wug.txt
+<<<
+> commit "v1"
+<<<
+> log
+===
+${COMMIT_HEAD}
+v1
+
+===
+${COMMIT_HEAD}
+initial commit
+
+<<<*
+# Capture the initial commit id (2nd captured group).
+D INIT_ID "${2}"
++ wug.txt notwug.txt
+> add wug.txt
+<<<
+> commit "v2"
+<<<
+= wug.txt notwug.txt
+# Reset back to the initial commit removes tracked wug.txt.
+> reset ${INIT_ID}
+<<<
+* wug.txt
+> status
+=== Branches ===
+\*master
+
+=== Staged Files ===
+
+=== Removed Files ===
+
+=== Modifications Not Staged For Commit ===
+
+=== Untracked Files ===
+
+<<<*
