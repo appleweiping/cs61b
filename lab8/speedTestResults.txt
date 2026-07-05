@@ -1,0 +1,36 @@
+# Lab 8 (MyHashMap) — test + speed results
+# Machine: Windows 11, JDK 21 (Temurin 21.0.7), CPU-only.
+#
+# Compile: javac -cp "../library-sp21/javalib/*" hashmap/*.java
+#          javac -cp "../library-sp21/javalib/*;." speed/*.java
+#
+# JUnit:   hashmap.TestMyHashMap        OK (8 tests)
+#          hashmap.TestMyHashMapBuckets OK (8 tests)   # exercises all 5 bucket types
+#          hashmap.TestMyHashMapExtra   OK (2 tests)
+#
+# MyHashMap: separate-chaining hash table. Default 16 buckets, maxLoad 0.75,
+# doubles + rehashes when (#items / #buckets) > maxLoad. Bucket data structure
+# is chosen by the subclass via createBucket(): AL=ArrayList, LL=LinkedList,
+# TS=TreeSet, HS=HashSet, PQ=PriorityQueue.
+
+== BucketsSpeedTest ==
+# Insert N random Strings of length L=10 as <String,Integer> pairs.
+
+N = 100000, L = 10
+  MyHashMapALBuckets (ArrayList)    : 0.13 sec
+  MyHashMapLLBuckets (LinkedList)   : 0.14 sec
+  MyHashMapTSBuckets (TreeSet)      : 0.19 sec
+  MyHashMapHSBuckets (HashSet)      : 0.18 sec
+  MyHashMapPQBuckets (PriorityQueue): 0.13 sec
+
+N = 500000, L = 10
+  MyHashMapALBuckets (ArrayList)    : 0.50 sec
+  MyHashMapLLBuckets (LinkedList)   : 0.54 sec
+  MyHashMapTSBuckets (TreeSet)      : 0.68 sec
+  MyHashMapHSBuckets (HashSet)      : 0.99 sec
+  MyHashMapPQBuckets (PriorityQueue): 1.00 sec
+
+# Takeaway: with a good hash + a bounded load factor, buckets stay short (O(1)
+# expected length), so the simple list-backed buckets (AL/LL) are fastest.
+# Tree/heap buckets pay an O(log b) per-bucket cost that only helps when many
+# keys collide. Runtime scales ~linearly in N (amortized-O(1) put via resize).

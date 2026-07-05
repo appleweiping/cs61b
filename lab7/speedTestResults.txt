@@ -1,0 +1,31 @@
+# Lab 7 (BSTMap) — speed test results
+# Machine: Windows 11, JDK 21 (Temurin 21.0.7), CPU-only.
+#
+# Compile: javac -cp "../library-sp21/javalib/*" bstmap/*.java
+# Run:     java -cp "../library-sp21/javalib/*;." bstmap.InsertRandomSpeedTest
+#          java -cp "../library-sp21/javalib/*;." bstmap.InsertInOrderSpeedTest
+#
+# JUnit:   bstmap.TestBSTMap      OK (7 tests)
+#          bstmap.TestBSTMapExtra OK (4 tests)
+
+== InsertRandomSpeedTest ==
+# Insert N random Strings of length L=10 as <String,Integer> pairs.
+N = 100000, L = 10
+  bstmap.ULLMap          : StackOverflow (unbalanced linked list, recursion depth)
+  bstmap.BSTMap          : 0.19 sec
+  Java's Built-in TreeMap: 0.14 sec
+  Java's Built-in HashMap: 0.06 sec
+
+# Random keys keep the BST roughly balanced (expected height ~ 2*ln N),
+# so BSTMap is competitive with the red-black TreeMap.
+
+== InsertInOrderSpeedTest ==
+# Insert N lexicographically increasing Strings (worst case for a plain BST).
+N = 10000
+  bstmap.ULLMap          : 0.58 sec
+  bstmap.BSTMap          : 1.22 sec   <-- degenerates to an O(N)-deep "spine"
+  Java's Built-in TreeMap: 0.02 sec   <-- self-balancing stays O(log N)
+  Java's Built-in HashMap: 0.00 sec
+
+# Takeaway: an unbalanced BST is O(N) per op in the worst (sorted-input) case,
+# which is exactly why CS61B moves on to balanced trees (2-3, LLRB) next.
