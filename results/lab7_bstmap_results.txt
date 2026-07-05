@@ -1,0 +1,24 @@
+# Lab 7 (BSTMap) — JUnit + speed results
+# Machine: Windows 11, JDK 21 (Temurin 21.0.7), CPU-only.
+# Compile: javac -cp "../library-sp21/javalib/*" bstmap/*.java
+# Run:     java -cp "../library-sp21/javalib/*;." org.junit.runner.JUnitCore bstmap.<Test>
+
+== bstmap.TestBSTMap ==
+OK (7 tests)
+
+== bstmap.TestBSTMapExtra ==
+OK (4 tests)
+
+== InsertRandomSpeedTest (L=10, N=100000) ==
+# java -cp "../library-sp21/javalib/*;." bstmap.InsertRandomSpeedTest  (input: 10 / 100000 / n)
+  bstmap.ULLMap          : StackOverflow (deep recursion over a linked list)
+  bstmap.BSTMap          : 0.19 sec
+  Java's Built-in TreeMap: 0.14 sec
+  Java's Built-in HashMap: 0.06 sec
+
+== InsertInOrderSpeedTest (N=10000, sorted keys = worst case) ==
+# java -cp "../library-sp21/javalib/*;." bstmap.InsertInOrderSpeedTest  (input: 10000 / n)
+  bstmap.ULLMap          : 0.58 sec
+  bstmap.BSTMap          : 1.22 sec   (unbalanced BST degrades to an O(N)-deep spine)
+  Java's Built-in TreeMap: 0.02 sec   (self-balancing keeps O(log N))
+  Java's Built-in HashMap: 0.00 sec

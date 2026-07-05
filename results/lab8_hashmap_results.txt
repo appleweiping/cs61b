@@ -1,0 +1,36 @@
+# Lab 8 (MyHashMap) — JUnit + speed results
+# Machine: Windows 11, JDK 21 (Temurin 21.0.7), CPU-only.
+# Compile: javac -cp "../library-sp21/javalib/*" hashmap/*.java
+#          javac -cp "../library-sp21/javalib/*;." speed/*.java
+# Run:     java -cp "../library-sp21/javalib/*;." org.junit.runner.JUnitCore hashmap.<Test>
+
+== hashmap.TestMyHashMap ==
+OK (8 tests)
+
+== hashmap.TestMyHashMapBuckets ==   # exercises all 5 bucket types
+OK (8 tests)
+
+== hashmap.TestMyHashMapExtra ==
+OK (2 tests)
+
+== BucketsSpeedTest — insert N random Strings, length L=10 ==
+# java -cp "../library-sp21/javalib/*;." speed.BucketsSpeedTest  (input: 10 / N / n)
+
+N = 100000:
+  MyHashMapALBuckets (ArrayList)    : 0.13 sec
+  MyHashMapLLBuckets (LinkedList)   : 0.14 sec
+  MyHashMapTSBuckets (TreeSet)      : 0.19 sec
+  MyHashMapHSBuckets (HashSet)      : 0.18 sec
+  MyHashMapPQBuckets (PriorityQueue): 0.13 sec
+
+N = 500000:
+  MyHashMapALBuckets (ArrayList)    : 0.50 sec
+  MyHashMapLLBuckets (LinkedList)   : 0.54 sec
+  MyHashMapTSBuckets (TreeSet)      : 0.68 sec
+  MyHashMapHSBuckets (HashSet)      : 0.99 sec
+  MyHashMapPQBuckets (PriorityQueue): 1.00 sec
+
+# Separate chaining, default 16 buckets, maxLoad 0.75, doubles + rehashes on overflow.
+# Runtime scales ~linearly in N (amortized-O(1) put). List-backed buckets (AL/LL) are
+# fastest since a bounded load factor keeps buckets short; tree/heap buckets pay an
+# O(log b) per-bucket cost that only pays off under heavy collisions.
